@@ -3,35 +3,75 @@ from Edge import Edge
 from DiGraph import DiGraph
 from GraphAlgoInterface import GraphAlgoInterface
 from GraphInterface import GraphInterface
+import json
+import matplotlib.pyplot as plt
+
 
 from typing import List
 
-
 class GraphAlgo(GraphAlgoInterface):
 
-    def __init__(self, graph: DiGraph):
-        self._graph = graph
+    def __init__(self, graph: DiGraph = DiGraph()):
+        self.__graph = graph
 
+    #done
     def get_graph(self) -> GraphInterface:
         """
         :return: the directed graph on which the algorithm works on.
         """
 
+        return self.__graph
+
+    #done
     def load_from_json(self, file_name: str) -> bool:
         """
         Loads a graph from a json file.
         @param file_name: The path to the json file
         @returns True if the loading was successful, False o.w.
         """
-        raise NotImplementedError
+        f = open(file_name)
+        json_s = f.read()
+        json_obj = json.loads(json_s)
 
+        for node in json_obj["Nodes"]:
+            if "pos" in node.keys():
+                pos = self.__get_pos(node["pos"])
+                self.__graph.add_node(node["id"], pos)
+            else:
+                self.__graph.add_node(node["id"])
+            
+        
+        for edge in json_obj["Edges"]:
+            self.__graph.add_edge(edge["src"], edge["dest"], edge["w"])
+        
+        f.close()
+    
+    #done
     def save_to_json(self, file_name: str) -> bool:
         """
         Saves the graph in JSON format to a file
         @param file_name: The path to the out file
         @return: True if the save was successful, False o.w.
         """
-        raise NotImplementedError
+        
+        f = open(file_name, "w")
+
+        json_s = """{"Edges":[""" 
+        for edge in self.__graph.get_all_edges():
+            json_s += repr(edge) + ","
+        json_s = json_s[:len(json_s) - 1] # remove last comma
+
+        json_s += """],"Nodes":["""
+        nodes = self.__graph.get_all_v()
+        for key in nodes:
+            json_s += repr(nodes[key]) + ","
+        json_s = json_s[:len(json_s) - 1] # remove last comma
+
+        json_s += "]}"
+
+        f.write(json_s)
+
+        f.close()
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
         """
@@ -58,7 +98,6 @@ class GraphAlgo(GraphAlgoInterface):
         More info:
         https://en.wikipedia.org/wiki/Dijkstra's_algorithm
         """
-        raise NotImplementedError
 
     def connected_component(self, id1: int) -> list:
         """
@@ -88,44 +127,61 @@ class GraphAlgo(GraphAlgoInterface):
         Otherwise, they will be placed in a random but elegant manner.
         @return: None
         """
-        raise NotImplementedError
+        
+        self.__plot_nodes()
+        self.__plot_edges()
 
-    """{"Edges":[{"src":0,"w":45.970607092631596,"dest":0}, ...], "Nodes":[{"id":0}, ...]}"""
+        plt.show()
 
-    def get_src(self, s: str) -> str:
-        res = ""
+    def get_edges(self) -> list:
+        return self.get_graph().get_all_edges()
 
-        i = s.find("src") + 5
+    def get_nodes(self) -> dict:
+        return self.get_graph().get_all_v()
 
-        for c in s[i:]:
-            if c != ",":
-                res += c
-            else:
-                return res
+    def add_node(self, id: int, pos: tuple = None) -> bool:
+        return self.__graph.add_node(id, pos)
 
-        return res
+    def add_edge(self, id1: int, id2: int, weight: float) -> bool:
+        return self.__graph.add_edge(id1, id2, weight)
 
-    def get_weight(self, s: str) -> str:
-        res = ""
+    def __plot_nodes(self) -> None:
+        nodes = self.get_nodes()
 
-        i = s.find("w") + 3
-        for c in s[i:]:
-            if c != ",":
-                res += c
-            else:
-                return res
+        for key in nodes:
+            x = nodes[key].pos[0]
+            y = nodes[key].pos[1]
+            plt.scatter(x, y, marker='o', color=[(31/255, 8/17, 12/17)], s=500)
+            plt.text(x-0.0135, y-0.0135, str(key), color="black", fontsize="14")
 
-        return res
+    def __plot_edges(self) -> None:
+        nodes = self.get_nodes()
 
-    def get_dest(selfs, s: str) -> str:
-        res = ""
+        for edge in self.get_edges():
+            src = nodes[edge.src]
+            dest = nodes[edge.dest]
+            weight = edge.weight
 
-        i = s.find("dest") + 6
-        for c in s[i:]:
-            if c != "}":
-                res += c
-            else:
-                return res
+            src_x = src.pos[0]
+            src_y = src.pos[1]
 
+            dest_x = dest.pos[0]
+            dest_y = dest.pos[1]
 
+            #plt.arrow(src_x, src_y, dest_x, dest_y)
+            #plt.annotate(s='', xy=(dest_x,dest_y), xytext=(0,0), arrowprops=dict(arrowstyle='-|>'))
+            plt.plot([src_x, dest_x], [src_y, dest_y])
 
+    @staticmethod
+    def __get_pos(pos_s: str) -> tuple:
+        i = pos_s.find(',')
+        x = float(pos_s[:i])
+
+        pos_s = pos_s[i + 1:]
+        i = pos_s.find(',')
+        y = float(pos_s[:i])
+
+        pos_s = pos_s[i + 1:]
+        z = float(pos_s)
+
+        return (x, y, z)

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>44678fee-102e-437e-bc4d-61f73a175663</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>tests1.py</StartupFile>
+    <StartupFile>tests2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -35,13 +35,19 @@
     <Compile Include="GraphAlgoInterface.py" />
     <Compile Include="GraphInterface.py" />
     <Compile Include="Graphs.py" />
+    <Compile Include="netx.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Node.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tests.py">
+    <Compile Include="TestDiGraph.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="tests1.py">
+    <Compile Include="TestGraphAlgo.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tests2.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
