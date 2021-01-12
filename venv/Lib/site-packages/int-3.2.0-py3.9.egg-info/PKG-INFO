@@ -1,0 +1,35 @@
+Metadata-Version: 1.1
+Name: int
+Version: 3.2.0
+Summary: Integer conversion utility.
+Home-page: https://github.com/dmulholl/int
+Author: Darren Mulholland
+Author-email: UNKNOWN
+License: Public Domain
+Description: 
+        Integer Conversion Utility
+        ==========================
+        
+        Int is a simple command line utility for converting integers between bases. It accepts an integer in its [b]inary, [o]ctal, [d]ecimal, or he[x]adecimal form, then prints it out in all four bases::
+        
+            $ int 64
+            hex: 40
+            dec: 64
+            oct: 100
+            bin: 01000000
+        
+        You can specify the base of the input using a single letter prefix.
+        (Defaults to decimal if omitted.) Int also accepts multiple arguments::
+        
+            $ int b1001 o777 d256 x1EA
+        
+        Leading zeros are ignored so integer literals in the form `0x123` are
+        also accepted.
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: License :: Public Domain
+Classifier: Topic :: Utilities

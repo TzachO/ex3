@@ -11,6 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>Graphs</Name>
     <RootNamespace>Graphs</RootNamespace>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Ex3_main.py" />
+    <Compile Include="GraphAlgo.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GraphAlgoInterface.py" />
     <Compile Include="GraphInterface.py" />
     <Compile Include="Graphs.py" />

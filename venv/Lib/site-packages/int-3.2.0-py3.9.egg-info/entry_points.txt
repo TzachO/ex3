@@ -1,0 +1,3 @@
+[console_scripts]
+int = int:main
+
