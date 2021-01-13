@@ -5,6 +5,7 @@ from GraphAlgoInterface import GraphAlgoInterface
 from GraphInterface import GraphInterface
 import json
 import matplotlib.pyplot as plt
+from mytools import *
 
 
 from typing import List
@@ -99,6 +100,34 @@ class GraphAlgo(GraphAlgoInterface):
         https://en.wikipedia.org/wiki/Dijkstra's_algorithm
         """
 
+        visited = set([])
+        unvisited = set(self.get_nodes().keys())
+        d = {node_id:(float('inf'), None) if node_id != id1 else (0, None) for node_id in unvisited}
+        
+        while len(unvisited) > 0:
+            distances = [d[id][0] for id in d.keys() if id in unvisited]
+            closest = next(id for id in unvisited if d[id][0] == min(distances))
+            
+            neighbours = set(self.__graph.all_out_edges_of_node(closest).keys())
+            unvisited_neighbours = unvisited.intersection(neighbours)
+
+            for neighbour in unvisited_neighbours:
+                weight = self.__graph.all_out_edges_of_node(closest)[neighbour]
+                if d[closest][0] + weight < d[neighbour][0]:
+                    d[neighbour] = (d[closest][0] + weight, closest)
+
+            visited.add(closest)
+            unvisited.remove(closest)
+
+        def get_path(id1, id2):
+            if id2 == id1:
+                return [id2]
+
+            previous = d[id2][1]
+            return get_path(id1, previous) + [id2]
+
+        return (d[id2][0] ,get_path(id1, id2))
+
     def connected_component(self, id1: int) -> list:
         """
         Finds the Strongly Connected Component(SCC) that node id1 is a part of.
@@ -108,7 +137,17 @@ class GraphAlgo(GraphAlgoInterface):
         Notes:
         If the graph is None or id1 is not in the graph, the function should return an empty list []
         """
-        raise NotImplementedError
+
+        color, p, d, f = self.DFS()
+        l = [(key,d[key]) for key in d.keys()]
+        sort_tuple(l)
+
+        gT = GraphAlgo(self.__graph.transpose())
+        colorT, pT, dT, fT = gT.DFS()
+        lT = [(key,dT[key]) for key in dT.keys()]
+        sort_tuple(lT)
+
+
 
     def connected_components(self) -> List[list]:
         """
@@ -119,6 +158,43 @@ class GraphAlgo(GraphAlgoInterface):
         If the graph is None the function should return an empty list []
         """
         raise NotImplementedError
+
+    def DFS(self):
+        nodes = set(self.get_nodes().keys())
+
+        color = {} # nodes' colors
+        p = {} # previous nodes
+        d = {} # discovery times
+        f = {} # finish times
+
+        for node_id in nodes:
+            color[node_id] = 'w'
+            p[node_id] = None
+
+        time = 0
+
+        def DFSVisit(node_id):
+            nonlocal time
+            color[node_id] = 'g'
+            time += 1
+            d[node_id] = time 
+            neighbours = set(self.__graph.all_out_edges_of_node(node_id).keys())
+            
+            for neighbour in neighbours:
+                if color[neighbour] == 'w':
+                    p[neighbour] = node_id
+                    DFSVisit(neighbour)
+
+            color[node_id] = "b"
+            time += 1
+            f[node_id]  = time
+
+        for node_id in nodes:
+            if color[node_id] == 'w':
+                time = time
+                DFSVisit(node_id)
+
+        return color, p, d, f
 
     def plot_graph(self) -> None:
         """

@@ -48,7 +48,7 @@ class DiGraph(GraphInterface):
         (other_node_id, weight)
         """
 
-        return {edge.src:edge.weight for edge in self.__edges if edge.dest == id1}
+        return {edge.dest:edge.weight for edge in self.__edges if edge.src == id1}
 
     def get_mc(self) -> int:
         """
@@ -160,4 +160,14 @@ class DiGraph(GraphInterface):
 
     def get_all_edges(self) -> list:
         return self.__edges
+
+    def transpose(self):
+        g = DiGraph()
+        for node in self.__nodes:
+            g.add_node(node)
+
+        for edge in self.__edges:
+            g.add_edge(edge.dest, edge.src, edge.weight)
+
+        return g
 
