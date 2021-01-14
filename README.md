@@ -1,6 +1,7 @@
 __Directed Weighted Graph - Python__
 
-*Authors: Tzach Itshak Ofir and Gal*
+*Authors: Tzach Itshak Ofir and Gal Braymok*
+
 
 
 ## Description
