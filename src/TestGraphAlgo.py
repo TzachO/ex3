@@ -1,7 +1,5 @@
 import unittest
 
-from mytools import *
-
 from Node import Node
 from Edge import Edge
 from DiGraph import DiGraph
@@ -13,15 +11,11 @@ class Test_TestGraphAlgo(unittest.TestCase):
         
         return
 
-    #done
     def test_load_from_json(self):
         g_algo = GraphAlgo(DiGraph())
         g_algo.load_from_json("""TestFiles\\no pos\\G_10_80_0.json""")
         self.assertEqual(len(g_algo.get_graph().get_all_v()), 10)
 
-        return
-
-    #done
     def test_save_to_json(self):
         g = DiGraph()
         for i in range(4):
@@ -54,7 +48,6 @@ class Test_TestGraphAlgo(unittest.TestCase):
 
         return
 
-    #done
     def test_shortest_path(self):
         ga = generate_graph()
         res = ga.shortest_path(1,5)
@@ -71,29 +64,36 @@ class Test_TestGraphAlgo(unittest.TestCase):
         self.assertEqual(g_algo.shortest_path(0,2), (5, [0, 1, 2]))
 
     def test_connected_component(self):
-        ga = generate_graph()
-        ga.connected_component(1)
-        return
+        ga = generate_graph2()
+        scc = ga.connected_component(1)
+        self.assertEqual(repr(scc), repr([0, 1, 2]))
 
     def test_connected_components(self):
-        return
+        ga = generate_graph2()
+        SCCs = ga.connected_components()
+        self.assertEqual(repr(SCCs), repr([[0, 1, 2], [3], [4]]))
 
     def test_plot_graph(self):
-        return
-
-    def test_get_src(self):
-        return
-
-    def test_get_weight(self):
+        ga = generate_graph2()
+        # ga.plot_graph()
         return
 
     def test_DFS(self):
         ga = generate_graph()
+        ga.add_node(7)
         color, p, d, f = ga.DFS()
-        l = [(key,d[key]) for key in d.keys()]
-        l = sort_tuple(l)
-        y = l
+        self.assertEqual(repr(color), repr({1: 'b', 2: 'b', 3: 'b', 4: 'b', 5: 'b', 7: 'b'}))
+        self.assertEqual(repr(p), repr({1: None, 2: 1, 3: 2, 4: 5, 5: 3, 7: None}))
+        self.assertEqual(repr(d), repr({1: 1, 2: 2, 3: 3, 5: 4, 4: 5, 7: 11}))
+        self.assertEqual(repr(f), repr({4: 6, 5: 7, 3: 8, 2: 9, 1: 10, 7: 12}))
 
+    def test_clear(self):
+        g_algo = GraphAlgo(DiGraph())
+        g_algo.load_from_json("""TestFiles\\no pos\\G_10_80_0.json""")
+        self.assertEqual(len(g_algo.get_graph().get_all_v()), 10)
+
+        g_algo.clear()
+        self.assertEqual(repr(g_algo), repr(GraphAlgo()))
 
 def generate_graph():
     g = DiGraph()
@@ -121,6 +121,21 @@ def generate_graph():
 
     return GraphAlgo(g)
 
+def generate_graph2():
+    g = DiGraph()
+    for i in range(5):
+        g.add_node(i)
+
+    g.add_edge(0, 2, 1)
+    g.add_edge(0, 3, 1)
+
+    g.add_edge(1, 0, 1)
+
+    g.add_edge(2, 1, 1)
+
+    g.add_edge(3, 4, 1)
+
+    return GraphAlgo(g)
 
 if __name__ == '__main__':
     unittest.main()
