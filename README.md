@@ -72,7 +72,7 @@ Node - represents the set of operations applicable on a node (vertex) in a (dire
 
 
 
-<h1>Test Times</h1>
+##Test Times
 <table>
   <tr>
     <th></th>
@@ -99,5 +99,4 @@ Node - represents the set of operations applicable on a node (vertex) in a (dire
     <td>-----------</td>
   </tr>
 </table>
-![IMG DESCIPTION]
-(images/screenshot.jpg)
+
