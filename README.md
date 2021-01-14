@@ -17,10 +17,10 @@ Implemented by DiGraph class. This interface is responsible for the structure of
 >
 Implemented by GraphAlgo class. In this class there are various algorithms that can be applied on graphs
 
-**Structure:**
+**Structures:**
+>Node - an object that stores data, represents graphs vertex. 
 >
-Node - represents the set of operations applicable on a node (vertex) in a (directional) weighted graph.
->
+>Edge - an object that connects to nodes (vertices) in a graph. 
 **DiGraph:**
 > - `v_size` - Returns the number of vertices in this graph.
 >
