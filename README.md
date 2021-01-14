@@ -103,3 +103,4 @@ Node - represents the set of operations applicable on a node (vertex) in a (dire
   </tr>
 </table>
 
+![](ex3/.idea/Photo.jpeg)
