@@ -59,7 +59,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for TestGraphAlgo.Test_TestGraphAlgo.test_connected_component" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for tests.TestGraphAlgo.Test_TestGraphAlgo.test_connected_component" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="ex3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -69,11 +69,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;TestGraphAlgo.Test_TestGraphAlgo.test_connected_component&quot;" />
+      <option name="_new_target" value="&quot;tests.TestGraphAlgo.Test_TestGraphAlgo.test_connected_component&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for TestGraphAlgo.Test_TestGraphAlgo.test_load_from_json" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for tests.TestGraphAlgo.Test_TestGraphAlgo.test_load_from_json" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="ex3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -83,11 +83,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;TestGraphAlgo.Test_TestGraphAlgo.test_load_from_json&quot;" />
+      <option name="_new_target" value="&quot;tests.TestGraphAlgo.Test_TestGraphAlgo.test_load_from_json&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for TestGraphAlgo.Test_TestGraphAlgo.test_save_to_json" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for tests.TestGraphAlgo.Test_TestGraphAlgo.test_save_to_json" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="ex3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -97,11 +97,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;TestGraphAlgo.Test_TestGraphAlgo.test_save_to_json&quot;" />
+      <option name="_new_target" value="&quot;tests.TestGraphAlgo.Test_TestGraphAlgo.test_save_to_json&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for TestGraphAlgo.Test_TestGraphAlgo.test_shortest_path" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for tests.TestGraphAlgo.Test_TestGraphAlgo.test_shortest_path" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="ex3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -111,17 +111,17 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;TestGraphAlgo.Test_TestGraphAlgo.test_shortest_path&quot;" />
+      <option name="_new_target" value="&quot;tests.TestGraphAlgo.Test_TestGraphAlgo.test_shortest_path&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.TimeComparisons" />
-        <item itemvalue="Python tests.Unittests for TestGraphAlgo.Test_TestGraphAlgo.test_shortest_path" />
-        <item itemvalue="Python tests.Unittests for TestGraphAlgo.Test_TestGraphAlgo.test_connected_component" />
-        <item itemvalue="Python tests.Unittests for TestGraphAlgo.Test_TestGraphAlgo.test_load_from_json" />
-        <item itemvalue="Python tests.Unittests for TestGraphAlgo.Test_TestGraphAlgo.test_save_to_json" />
+        <item itemvalue="Python tests.Unittests for tests.TestGraphAlgo.Test_TestGraphAlgo.test_shortest_path" />
+        <item itemvalue="Python tests.Unittests for tests.TestGraphAlgo.Test_TestGraphAlgo.test_connected_component" />
+        <item itemvalue="Python tests.Unittests for tests.TestGraphAlgo.Test_TestGraphAlgo.test_load_from_json" />
+        <item itemvalue="Python tests.Unittests for tests.TestGraphAlgo.Test_TestGraphAlgo.test_save_to_json" />
       </list>
     </recent_temporary>
   </component>
