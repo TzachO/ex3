@@ -76,7 +76,7 @@ Node - represents the set of operations applicable on a node (vertex) in a (dire
 
 
 
-## Test Times
+## Times Comparisons
 <table>
   <tr>
     <th></th>
